@@ -1,0 +1,19 @@
+<h1 class="container">Fashion AirBnB</h1>
+
+
+
+
+
+<div class="container">
+  <ul class="list-group">
+
+
+    <% @accessories.each do |accessory|%>
+
+      <div class="list-group-item">
+        <li><%= link_to "#{accessory.description}"  %></li>
+      </div>
+    <% end %>
+
+  </ul>
+</div>
