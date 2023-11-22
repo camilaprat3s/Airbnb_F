@@ -1,19 +1,16 @@
-<h1 class="container">Fashion AirBnB</h1>
+<h1>Accessories#index</h1>
 
+<% @accessories.each do |accessory| %>
+  <div>
+    <h2><%= accessory.name %></h2>
+    <p><%= accessory.description %></p>
+    <p><%= number_to_currency(accessory.price) %></p>
 
-
-
-
-<div class="container">
-  <ul class="list-group">
-
-
-    <% @accessories.each do |accessory|%>
-
-      <div class="list-group-item">
-        <li><%= link_to "#{accessory.description}"  %></li>
-      </div>
+    <% if current_user == accessory.user %>
+      <p>
+        <%= link_to 'Edit', edit_accessory_path(accessory) %>
+        <%= link_to 'Delete', accessory, turbo_method: :delete, data: { confirm: 'Are you sure?' } %>
+      </p>
     <% end %>
-
-  </ul>
-</div>
+  </div>
+<% end %>

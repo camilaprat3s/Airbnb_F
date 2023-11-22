@@ -1,0 +1,19 @@
+<!--<h1>Accessories#show</h1>-->
+<p>
+  <strong>Name:</strong>
+  <%= @accessory.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @accessory.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @accessory.price %>
+</p>
+
+<p>
+<%= link_to 'Delete', accessory_path(@accessory), method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>

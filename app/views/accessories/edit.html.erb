@@ -1,0 +1,21 @@
+<h1>Accessories#edit</h1>
+<%= form_for :accessory, url: accessory_path(@accessory), method: :patch do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.label :price %><br>
+    <%= f.number_field :price %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
