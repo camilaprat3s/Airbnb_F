@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -21,25 +21,14 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+    <%= f.input :first_name, autofocus: true, input_html: { autocomplete: "given-name" } %>
+    <%= f.input :last_name, input_html: { autocomplete: "family-name" } %>
   </div>
 
   <div class="form-actions">
     <%= f.button :submit, "Update" %>
-       <%= form.label :first_name %>
-<%= form.text_field :first_name, autofocus: true %>
-
-    <%= form.label :last_name %>
-<%= form.text_field :last_name %>
   </div>
 <% end %>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
 
 <h3>Cancel my account</h3>
 
