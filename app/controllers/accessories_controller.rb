@@ -7,4 +7,7 @@ class AccessoriesController < ApplicationController
     @accessory = Accessory.find(params[:id])
   end
 
+  def confirm
+    @accessory = Accessory.find(params[:id])
+  end
 end

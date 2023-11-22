@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get "accessories/:id", to: "accessories#show"
 
+  get 'accessories/:id/confirm', to: 'accessories#confirm', as: 'confirm_accessory'
 
   # Defines the root path route ("/")
   root to: "accessories#index"
