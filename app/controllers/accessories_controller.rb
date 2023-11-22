@@ -1,6 +1,6 @@
 class AccessoriesController < ApplicationController
   before_action :set_accessory, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_accessory, only: [:edit, :update, :destroy]
+  #before_action :authorize_accessory, only: [:edit, :update, :destroy]
 
   def index
     @accessories = Accessory.all
@@ -12,7 +12,7 @@ class AccessoriesController < ApplicationController
 
   def create
     @accessory = Accessory.new(accessory_params)
-    @accessory.user = current_user
+    #@accessory.user = current_user
 
     if @accessory.save
       flash[:notice] = "Accessory was successfully created."
@@ -60,7 +60,7 @@ class AccessoriesController < ApplicationController
       flash[:alert] = "You are not authorized to perform this action."
       redirect_to @accessory
     end
-
+  end
   def confirm
     @accessory = Accessory.find(params[:id])
 
