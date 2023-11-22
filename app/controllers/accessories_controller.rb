@@ -3,4 +3,11 @@ class AccessoriesController < ApplicationController
     @accessories = Accessory.all
   end
 
+  def show
+    @accessory = Accessory.find(params[:id])
+  end
+
+  def confirm
+    @accessory = Accessory.find(params[:id])
+  end
 end
