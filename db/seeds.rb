@@ -12,8 +12,8 @@ puts "Cleaning database..."
 Accessory.destroy_all
 
 puts "Creating Accessories..."
-watch = {location: "hell", price: 4.124, availability: true, description: "very nice gold watch with many diamonds", condition: "meh"}
-bracelet =  {location: "sun", price: 19999999999999, availability: false, description: "this bracelet makes you very powerful"}
+watch = {name: "Lunar Watch", location: "moon", price: 400000.124, availability: true, description: "very nice silver watch with a small lunar stone", condition: "meh"}
+bracelet = {name: "Helios' Bracelet", location: "sun", price: 19999999999999, availability: false, description: "this bracelet makes you very powerful", condition: "perfect"}
 
 [watch, bracelet].each do |attributes|
   accessory = Accessory.create!(attributes)
