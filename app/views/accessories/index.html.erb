@@ -11,7 +11,7 @@
     <% @accessories.each do |accessory|%>
 
       <div class="list-group-item">
-        <li><%= link_to "#{accessory.description}"  %></li>
+        <li><%= link_to "#{accessory.name}: #{accessory.description}"  %></li>
       </div>
     <% end %>
 
