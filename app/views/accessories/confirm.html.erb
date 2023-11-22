@@ -1,0 +1,4 @@
+<h1>Confirmation</h1>
+<p>You are about to checkout the accessory: <%= @accessory.name %></p>
+<%= link_to 'Confirm Checkout', accessory_path(@accessory), method: :put %>
+<%= link_to 'Cancel', accessory_path(@accessory) %>
