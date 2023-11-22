@@ -60,5 +60,9 @@ class AccessoriesController < ApplicationController
       flash[:alert] = "You are not authorized to perform this action."
       redirect_to @accessory
     end
+
+  def confirm
+    @accessory = Accessory.find(params[:id])
+
   end
 end
