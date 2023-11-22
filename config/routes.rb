@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :accessories
   devise_for :users
   # root to: "pages#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -12,5 +13,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root to: "accessories#index"
+  post "accessories", to: "accessories#create"
+  get "accessories", to: "accessories#index"
+  get "accessories/:id", to: "accessories#show"
+  patch "accessories/:id", to: "accessories#update"
+  delete "accessories/:id", to: "accessories#destroy"
+
 
 end
