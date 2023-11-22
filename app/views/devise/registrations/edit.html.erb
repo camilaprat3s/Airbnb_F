@@ -25,8 +25,21 @@
 
   <div class="form-actions">
     <%= f.button :submit, "Update" %>
+       <%= form.label :first_name %>
+<%= form.text_field :first_name, autofocus: true %>
+
+    <%= form.label :last_name %>
+<%= form.text_field :last_name %>
   </div>
 <% end %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
 
 <h3>Cancel my account</h3>
 
