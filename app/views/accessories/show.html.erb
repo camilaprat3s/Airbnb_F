@@ -1,0 +1,16 @@
+<div class=text-center>
+  <div>
+    <h1><%= "Selected Accessory:" %></h1>
+    <h2> <%=" #{@accessory.description}" %></h2>
+  </div>
+
+  <div>
+    <p><%= "Price: $#{@accessory.price}" %></p>
+    <p><%= "Location: #{@accessory.location}" %></p>
+    <p><%= @accessory.availability == true ? "Currently Available: Yes" : "Currently Available: No" %></p>
+    <p><%= "Condition: #{@accessory.condition}" %></p>
+  </div>
+  <div>
+    <p><%= link_to "Back to list", accessories_path %></p>
+  </div>
+</div>

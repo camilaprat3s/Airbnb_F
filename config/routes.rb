@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get "accessories", to: "accessories#index"
 
+  get "accessories/:id", to: "accessories#show"
+
 
   # Defines the root path route ("/")
   root to: "accessories#index"
