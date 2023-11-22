@@ -1,16 +1,20 @@
-<div class=text-center>
+<div class="text-center container mt-5">
   <div>
-    <h1><%= "Selected Accessory:" %></h1>
-    <h2> <%=" #{@accessory.description}" %></h2>
+    <h1><%= @accessory.name %></h1>
+    <h2> <%= @accessory.description %></h2>
   </div>
-
-  <div>
-    <p><%= "Price: $#{@accessory.price}" %></p>
-    <p><%= "Location: #{@accessory.location}" %></p>
-    <p><%= @accessory.availability == true ? "Currently Available: Yes" : "Currently Available: No" %></p>
-    <p><%= "Condition: #{@accessory.condition}" %></p>
+  <div class="row justify-content-between ">
+    <div class="col-lg-6 class card bg-primary my-3">
+      <p><%= "Price: $#{@accessory.price}" %></p>
+      <p><%= "Location: #{@accessory.location}" %></p>
+      <p><%= @accessory.availability == true ? "Currently Available: Yes" : "Currently Available: No" %></p>
+      <p><%= "Condition: #{@accessory.condition}" %></p>
+    </div>
+    <div class ="col-lg-6 col-lg-6 class card bg-primary my-3">
+      <p><%= "image goes here" %></p>
+    </div>
   </div>
-  <div>
-    <p><%= link_to "Back to list", accessories_path %></p>
+  <div class="m-3">
+    <p> <%= link_to "BACK", accessories_path %></p>
   </div>
 </div>
