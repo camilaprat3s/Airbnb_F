@@ -1,6 +1,6 @@
 class AccessoriesController < ApplicationController
-  before_action :set_accessory, only: [:show, :edit, :update, :destroy]
-  #before_action :authorize_accessory, only: [:edit, :update, :destroy]
+  before_action :set_accessory, only: [:show, :edit, :update, :destroy, :confirm]
+  # before_action :authorize_accessory, only: [:edit, :update, :destroy]
 
   def index
     @accessories = Accessory.all
@@ -12,13 +12,13 @@ class AccessoriesController < ApplicationController
 
   def create
     @accessory = Accessory.new(accessory_params)
-    #@accessory.user = current_user
+    # @accessory.user = current_user
 
     if @accessory.save
       flash[:notice] = "Accessory was successfully created."
       redirect_to @accessory
     else
-      flash[:alert] = "Accessory could not be created. " + @accessory.errors.full_messages.join(", ")
+      flash[:alert] = "Accessory could not be created. " + @accessory.errors.full_messages.join(', ')
       render :new
     end
   end
@@ -61,8 +61,7 @@ class AccessoriesController < ApplicationController
       redirect_to @accessory
     end
   end
-  def confirm
-    @accessory = Accessory.find(params[:id])
 
+  def confirm
   end
 end
