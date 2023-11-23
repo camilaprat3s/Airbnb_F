@@ -1,23 +1,25 @@
 
 <%= stylesheet_link_tag 'card_product', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= stylesheet_link_tag 'btn_ghost', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= stylesheet_link_tag 'btn_flat', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-<div class="text-center container mt-5">
+<div class=" container mt-5">
 
-<div class="card-product">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-  <div class="card-product-infos">
-    <h2><%= @accessory.name %></h2>
-    <p><%= "Description: #{@accessory.description}" %></p>
-    <p><%= "Category: #{@accessory.category}" %></p>
-    <p><%= "Price per day: $#{@accessory.price_per_day}" %></p>
-    <p><%= "Location: #{@accessory.location}" %></p>
-    <p><%= @accessory.availability == true ? "Currently Available: Yes" : "Currently Available: No" %></p>
-    <p><%= "Condition: #{@accessory.condition}" %></p>
+  <div class="card-product">
+    <%= image_tag("#{@accessory.image}")%>
+    <div class="card-product-infos text-start">
+      <h2><%= @accessory.name %></h2>
+      <p><%= "Description: #{@accessory.description}" %></p>
+      <p><%= "Category: #{@accessory.category}" %></p>
+      <p><%= "Price per day: $#{@accessory.price_per_day}" %></p>
+      <p><%# "Location: #{@accessory.location}" %></p>
+      <p><%# @accessory.availability == true ? "Currently Available: Yes" : "Currently Available: No" %></p>
+      <p><%= "Condition: #{@accessory.condition}" %></p>
+      <p class="pt-2"><%= link_to "Borrow now", confirm_accessory_path(@accessory), class: "btn btn-lg btn-flat" %></p>
+    </div>
   </div>
-</div>
 
-  <div class="m-3">
-    <p> <%= link_to "BACK", accessories_path %></p>
-    <%= link_to 'Borrow', confirm_accessory_path(@accessory), class: 'btn btn-primary' %>
+  <div class="text-center pt-5">
+    <%= link_to "BACK", accessories_path, class: "btn btn-ghost" %>
   </div>
 </div>
