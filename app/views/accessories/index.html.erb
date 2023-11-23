@@ -8,7 +8,7 @@
       <% @accessories.each do |accessory| %>
         <div class="list-group-item">
           <li>
-            <%= link_to accessory.name, accessories_path(accessory) %><br>
+            <%= link_to accessory.name, accessory_path(accessory) %><br>
             Description: <%= accessory.description %><br>
             Price per day: <%= accessory.price_per_day %><br>
             <%# if current_user == accessory.user %>
