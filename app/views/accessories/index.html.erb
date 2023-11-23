@@ -2,18 +2,18 @@
 
 
 
-
-
 <div class="container">
-  <ul class="list-group">
-
-
+  <div class="row">
     <% @accessories.each do |accessory|%>
-
-      <div class="list-group-item">
-        <li><%= link_to "#{accessory.name}: #{accessory.description}"  %></li>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title"><%= accessory.name %></h4>
+            <p class="card-text"><%=accessory.description%></p>
+            <%= link_to "Details", class: "btn btn-primary" %>
+          </div>
+        </div>
       </div>
     <% end %>
-
-  </ul>
+  </div>
 </div>
