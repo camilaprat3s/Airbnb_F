@@ -1,12 +1,13 @@
-<h1 class="container">Fashion AirBnB</h1>
+<%# <h1 class="container">Fashion AirBnB</h1> %>
 
 
 
-<div class="container">
+<div class="container mt-4">
   <div class="row">
     <% @accessories.each do |accessory|%>
       <div class="col-md-4 mb-4">
         <div class="card">
+          <img src="<%= accessory.image_url %>" class="card-img-top" alt="<%= accessory.name %> Image">
           <div class="card-body">
             <h4 class="card-title"><%= accessory.name %></h4>
             <p class="card-text"><%=accessory.description%></p>
