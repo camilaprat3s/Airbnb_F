@@ -1,23 +1,20 @@
 
+<%= stylesheet_link_tag 'card_product', media: 'all', 'data-turbolinks-track': 'reload' %>
+
 <div class="text-center container mt-5">
-  <div>
-    <h1><%= @accessory.name %></h1>
-    <h2> <%= @accessory.description %></h2>
+
+<div class="card-product">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <div class="card-product-infos">
+    <h2><%= @accessory.name %></h2>
+    <p><%= "Description: #{@accessory.description}" %></p>
+    <p><%= "Category: #{@accessory.category}" %></p>
+    <p><%= "Price per day: $#{@accessory.price_per_day}" %></p>
+    <p><%= "Location: #{@accessory.location}" %></p>
+    <p><%= @accessory.availability == true ? "Currently Available: Yes" : "Currently Available: No" %></p>
+    <p><%= "Condition: #{@accessory.condition}" %></p>
   </div>
-
-
-
-  <div class="row">
-    <div class="col-md-6 p-2 rounded">
-      <p><%= "Price: $#{@accessory.price}" %></p>
-      <p><%= "Location: #{@accessory.location}" %></p>
-      <p><%= @accessory.availability == true ? "Currently Available: Yes" : "Currently Available: No" %></p>
-      <p><%= "Condition: #{@accessory.condition}" %></p>
-    </div>
-    <div class ="col-md-6 p-2 rounded">
-      <p><%= "image goes here" %></p>
-    </div>
-  </div>
+</div>
 
 
   <div class="m-3">
