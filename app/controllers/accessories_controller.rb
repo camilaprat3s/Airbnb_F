@@ -3,7 +3,11 @@ class AccessoriesController < ApplicationController
   # before_action :authorize_accessory, only: [:edit, :update, :destroy]
 
   def index
-    @accessories = Accessory.all
+    if params[:query].present?
+      @accessories = Accessory.where('name LIKE :query OR description LIKE :query OR category LIKE :query OR condition LIKE :query', query: "%#{params[:query]}%")
+    else
+      @accessories = Accessory.all
+    end
   end
 
   def new
@@ -66,6 +70,16 @@ class AccessoriesController < ApplicationController
       flash[:alert] = "You are not authorized to perform this action."
       redirect_to @accessory
     end
+  end
+  def search
+    if params[:query].present?
+      @accessories = Accessory.search(params[:query])
+      flash[:notice] = "Your search results" if @accessories.present?
+      flash[:alert] = "No results were found" if @accessories.empty?
+    else
+      @accessories = Accessory.all
+    end
+    render 'search'
   end
 
   def confirm

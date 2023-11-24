@@ -1,4 +1,6 @@
 class Accessory < ApplicationRecord
+  include PgSearch::Model
+  multisearchable against: [:name, :description, :category, :condition, :location]
   #belongs_to :user
 
   CATEGORY = ['bags', 'shoes', 'belts', 'others', 'exotic']
@@ -10,4 +12,13 @@ class Accessory < ApplicationRecord
   validates :category, inclusion: { in: CATEGORY }
 
   alias_attribute :price, :price_per_day
+
+  def reindex
+    PgSearch::Multisearch.rebuild(self)
+  end
+
+  def self.search(query)
+    where("name LIKE ? OR description LIKE ?", "%#{query}%", "%#{query}%")
+  end
+
 end
