@@ -28,6 +28,7 @@ class AccessoriesController < ApplicationController
   end
 
   def edit
+    @object = Accessory.find(params[:id])
   end
 
   def update
@@ -49,11 +50,15 @@ class AccessoriesController < ApplicationController
   private
 
   def accessory_params
-    params.require(:accessory).permit(:name, :description, :price_per_day, :category)
+    params.require(:accessory).permit(:name, :description, :price_per_day, :category, :condition, :location, :image)
   end
 
   def set_accessory
-    @accessory = Accessory.find(params[:id])
+    @accessory = Accessory.find_by(id: params[:id])
+    if @accessory.nil?
+      flash[:alert] = "Accessory not found"
+      redirect_to accessories_path
+    end
   end
 
   def authorize_accessory
