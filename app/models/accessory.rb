@@ -1,7 +1,8 @@
 class Accessory < ApplicationRecord
   #belongs_to :user
 
-  CATEGORY = ['misc', 'jewellery', 'bags']
+  CATEGORY = ['bags', 'shoes', 'belts', 'others', 'exotic']
+  CONDITION = ['Brand New','Just out of the box', 'Mint', 'Loved a little', 'meh']
 
   validates :name, presence: true
   validates :description, presence: true
