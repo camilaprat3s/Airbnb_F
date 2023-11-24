@@ -16,8 +16,7 @@ class AccessoriesController < ApplicationController
 
   def create
     @accessory = Accessory.new(accessory_params)
-    #@accessory.user = current_user
-
+\
 
     if @accessory.save
       flash[:notice] = "Accessory was successfully created."
@@ -35,10 +34,11 @@ class AccessoriesController < ApplicationController
     @object = Accessory.find(params[:id])
   end
 
+  # app/controllers/accessories_controller.rb
   def update
     if @accessory.update(accessory_params)
-      flash[:notice] = "Accessory was successfully updated."
-      redirect_to @accessory
+      flash[:notice] = "Yay! 🎉 you successfully borrowed this item."
+      redirect_to root_path
     else
       flash[:alert] = "Accessory could not be updated. " + @accessory.errors.full_messages.join(", ")
       render :edit

@@ -1,12 +1,26 @@
-<%= simple_form_for @accessory do |f| %>
-  <%= f.input :image %>
-  <%= f.input :name %>
-  <%= f.input :description %>
+<%= stylesheet_link_tag 'btn_flat_show', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-  <%= f.input :price_per_day %>
-  <%= f.input :location %>
-  <%= f.input :category, collection: Accessory::CATEGORY %>
-  <%= f.input :condition, collection: Accessory::CONDITION %>
+<div class="container">
 
-  <%= f.submit "Create Accessory" %>
-<% end %>
+  <div class="text-center mt-4 mb-4"><h1> List your accessory</h1>
+
+  <%= simple_form_for @accessory, html: { class: 'my-form' } do |f| %>
+
+    <div class="row">
+      <div class="col-md-6 mt-4">
+        <%= f.input :name, label: 'Name:', label_html: { class: 'control-label' }, input_html: { class: 'form-control' } %>
+        <%= f.input :image, label: 'Image URL:', label_html: { class: 'control-label' }, input_html: { class: 'form-control' } %>
+        <%= f.input :description, label: 'Description:', label_html: { class: 'control-label' }, input_html: { class: 'form-control' } %>
+        <%= f.input :price_per_day, label: 'Price Per Day:', label_html: { class: 'control-label' }, input_html: { class: 'form-control' } %>
+      </div>
+      <div class="col-md-6 mt-4">
+        <%= f.input :category, collection: Accessory::CATEGORY, label_html: { class: 'control-label' }, input_html: { class: 'form-control' } %>
+        <%= f.input :condition, collection: Accessory::CONDITION, label_html: { class: 'control-label' }, input_html: { class: 'form-control' } %>
+        <%= f.submit 'List Accessory', class: 'btn btn-flat-show btn-lg' %>
+        <div>
+        <%= link_to 'Back to Accessories', accessories_path, class: 'btn btn-flat-show mt-4' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<div>
