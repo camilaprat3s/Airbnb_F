@@ -4,7 +4,7 @@ class AccessoriesController < ApplicationController
 
   def index
     if params[:query].present?
-      @accessories = Accessory.search(params[:query])
+      @accessories = Accessory.where('name LIKE :query OR description LIKE :query OR category LIKE :query OR condition LIKE :query', query: "%#{params[:query]}%")
     else
       @accessories = Accessory.all
     end
