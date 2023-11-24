@@ -1,20 +1,25 @@
 <%# <h1 class="container">Fashion AirBnB</h1> %>
 
-
-
-<div class="container mt-4">
-  <div class="row">
-    <% @accessories.each do |accessory|%>
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img src="<%= accessory.image_url %>" class="card-img-top" alt="<%= accessory.name %> Image">
-          <div class="card-body">
-            <h4 class="card-title"><%= accessory.name %></h4>
-            <p class="card-text"><%=accessory.description%></p>
-            <%= link_to "Details", class: "btn btn-primary" %>
-          </div>
+<div class="container">
+  <ul class="list-group">
+    <% if @accessories.empty? %>
+      <p>No accessories found.</p>
+    <% else %>
+      <% @accessories.each do |accessory| %>
+        <div class="list-group-item">
+          <li>
+            <%= link_to accessory.name, accessory_path(accessory) %><br>
+            Description: <%= accessory.description %><br>
+            Price per day: <%= accessory.price_per_day %><br>
+            <%# if current_user == accessory.user %>
+              <%= link_to 'Edit', edit_accessory_path(accessory) %>
+              <%= link_to 'Remove', accessory_path(accessory),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+            <%# end %>
+          </li>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  </div>
+  </ul>
+
+  <%= link_to 'New Accessory', new_accessory_path, class: 'btn btn-primary' %>
 </div>

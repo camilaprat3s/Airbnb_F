@@ -1,0 +1,13 @@
+<div class="container mt-5" data-controller="confirm">
+  <div class="card">
+    <div class="card-header">
+      <h1>Confirmation</h1>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">You are about to borrow: <%= @accessory.name %></h5>
+      <%= link_to 'Borrow', accessory_path(@accessory), method: :put, remote: true, class: 'btn btn-primary', data: { confirm_target: 'borrowButton' } %>
+      <%= link_to 'Cancel', accessory_path(@accessory), class: 'btn btn-secondary' %>
+    </div>
+  </div>
+  <div class="alert alert-success d-none" data-confirm-target="message"></div>
+</div>

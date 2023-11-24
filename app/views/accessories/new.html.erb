@@ -1,0 +1,10 @@
+<%= simple_form_for @accessory do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+
+  <%= f.input :price_per_day %>
+  <%= f.input :category, collection: Accessory::CATEGORY %>
+
+
+  <%= f.submit "Create Accessory" %>
+<% end %>
