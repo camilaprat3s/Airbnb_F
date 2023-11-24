@@ -1,6 +1,6 @@
 <%= form_with(url: accessories_path, method: :get, local: true) do %>
   <%= label_tag(:query, "Search for:") %>
-  <%= text_field_tag(:query) %>
+  <%= text_field_tag(:query, '', id: 'search', data: {autocomplete_source: accessories_path}) %>
   <%= submit_tag("Search") %>
   <%= link_to 'Back', accessories_path(query: nil), class: 'btn btn-primary' %>
 <% end %>
