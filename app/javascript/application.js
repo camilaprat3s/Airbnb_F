@@ -3,3 +3,9 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import "bootstrap"
+
+$(document).ready(function() {
+  $('#search').autocomplete({
+    source: $('#search').data('autocomplete-source')
+  });
+});

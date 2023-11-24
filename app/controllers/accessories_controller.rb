@@ -3,7 +3,11 @@ class AccessoriesController < ApplicationController
   # before_action :authorize_accessory, only: [:edit, :update, :destroy]
 
   def index
-    @accessories = Accessory.all
+    if params[:query].present?
+      @accessories = Accessory.where('name LIKE :query OR description LIKE :query OR category LIKE :query OR condition LIKE :query', query: "%#{params[:query]}%")
+    else
+      @accessories = Accessory.all
+    end
   end
 
   def new
@@ -12,8 +16,7 @@ class AccessoriesController < ApplicationController
 
   def create
     @accessory = Accessory.new(accessory_params)
-    #@accessory.user = current_user
-
+\
 
     if @accessory.save
       flash[:notice] = "Accessory was successfully created."
@@ -28,12 +31,14 @@ class AccessoriesController < ApplicationController
   end
 
   def edit
+    @object = Accessory.find(params[:id])
   end
 
+  # app/controllers/accessories_controller.rb
   def update
     if @accessory.update(accessory_params)
-      flash[:notice] = "Accessory was successfully updated."
-      redirect_to @accessory
+      flash[:notice] = "Yay! 🎉 you successfully borrowed this item."
+      redirect_to root_path
     else
       flash[:alert] = "Accessory could not be updated. " + @accessory.errors.full_messages.join(", ")
       render :edit
@@ -49,11 +54,15 @@ class AccessoriesController < ApplicationController
   private
 
   def accessory_params
-    params.require(:accessory).permit(:name, :description, :price_per_day, :category)
+    params.require(:accessory).permit(:name, :description, :price_per_day, :category, :condition, :location, :image)
   end
 
   def set_accessory
-    @accessory = Accessory.find(params[:id])
+    @accessory = Accessory.find_by(id: params[:id])
+    if @accessory.nil?
+      flash[:alert] = "Accessory not found"
+      redirect_to accessories_path
+    end
   end
 
   def authorize_accessory
@@ -61,6 +70,16 @@ class AccessoriesController < ApplicationController
       flash[:alert] = "You are not authorized to perform this action."
       redirect_to @accessory
     end
+  end
+  def search
+    if params[:query].present?
+      @accessories = Accessory.search(params[:query])
+      flash[:notice] = "Your search results" if @accessories.present?
+      flash[:alert] = "No results were found" if @accessories.empty?
+    else
+      @accessories = Accessory.all
+    end
+    render 'search'
   end
 
   def confirm
