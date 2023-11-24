@@ -1,13 +1,28 @@
-<div class="container mt-5" data-controller="confirm">
-  <div class="card">
-    <div class="card-header">
-      <h1>Confirmation</h1>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">You are about to borrow: <%= @accessory.name %></h5>
-      <%= link_to 'Borrow', accessory_path(@accessory), method: :put, remote: true, class: 'btn btn-primary', data: { confirm_target: 'borrowButton' } %>
-      <%= link_to 'Cancel', accessory_path(@accessory), class: 'btn btn-secondary' %>
+<link rel="stylesheet" href="/assets/card_product_show-2da28b514cdeaa38c65d9ec049643dcecf7e23668b7d6ac19a79cc287e38ddb9.css" media="all" data-turbolinks-track="reload" />
+<link rel="stylesheet" href="/assets/btn_ghost_show-6fc3f10effab37d29aa1190e88b5d80181376367f8e686c372ac3f6c9a7679f6.css" media="all" data-turbolinks-track="reload" />
+<link rel="stylesheet" href="/assets/btn_flat_show-2eaf19f3d48a79a914f4a47070412a4a1636a160b74e28c131ea2fddfa1eace9.css" media="all" data-turbolinks-track="reload" />
+
+<div class="container-fluid">
+  <div class="row linha-2">
+    <!-- Add your content here -->
+  </div>
+
+  <div class="container mt-5">
+    <% flash.each do |type, message| %>
+      <div class="flash flash-<%= type %> alert alert-dismissible fade show" role="alert">
+        <span><%= message %></span>
+        <a data-bs-dismiss="alert" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </a>
+      </div>
+    <% end %>
+
+    <div class="card-product-show">
+      <div class="card-product-show-infos text-start">
+        <h2>You are about to borrow: <%= @accessory.name %></h2>
+        <%= link_to 'Borrow', accessory_path(@accessory), method: :put, class: 'btn btn-lg btn-flat-show borrow-button' %>
+        <%= link_to 'Cancel', accessory_path(@accessory), class: 'btn btn-ghost-show' %>
+      </div>
     </div>
   </div>
-  <div class="alert alert-success d-none" data-confirm-target="message"></div>
 </div>
