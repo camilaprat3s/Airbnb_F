@@ -14,6 +14,7 @@ Accessory.destroy_all
 user= User.create(email: "user@mail.com", password: "1234567", first_name: "Name", last_name: "Last")
 
 puts "Creating Accessories..."
+
 watch = {name: "Lunar Watch", location: "moon", price_per_day: 400000.124, availability: true, description: "very nice silver watch with a small lunar stone", condition: "meh", category: "jewellery", image: "https://www.louismoinet.com/wp-content/uploads/Produits/Moon/Moon_LM-45-50-MO.jpg"}
 bracelet = {name: "Helios' Bracelet", location: "sun", price_per_day: 19999999999999, availability: false, description: "this bracelet makes you very powerful", condition: "perfect", category: "jewellery", image: "https://www.rebelandrose.com/media/images/rrproducts/png/big/RR-BR035-S.png?_=1695282617"}
 
@@ -22,3 +23,6 @@ bracelet = {name: "Helios' Bracelet", location: "sun", price_per_day: 1999999999
   puts "Created #{accessory.description}"
 end
 puts "Finished!"
+
+# ../../assets/images/moon_watch.jpg
+# ../../assets/images/solar_bracelet.jpg

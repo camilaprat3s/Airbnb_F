@@ -1,12 +1,10 @@
-<%= form_for @accessory do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<%= simple_form_for @accessory do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
 
-  <%= f.label :description %>
-  <%= f.text_area :description %>
+  <%= f.input :price_per_day %>
+  <%= f.input :category, collection: Accessory::CATEGORY %>
 
-  <%= f.label :price_per_day %>
-  <%= f.number_field :price_per_day %>
 
   <%= f.submit "Create Accessory" %>
 <% end %>
