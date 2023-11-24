@@ -17,8 +17,8 @@ class Accessory < ApplicationRecord
     PgSearch::Multisearch.rebuild(self)
   end
 
-    def self.search(query)
-      where("name LIKE ?", "%#{query}%")
-    end
+  def self.search(query)
+    where("name LIKE ? OR description LIKE ?", "%#{query}%", "%#{query}%")
+  end
 
 end
