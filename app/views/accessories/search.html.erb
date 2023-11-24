@@ -1,0 +1,13 @@
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<% if flash[:alert] %>
+  <p><%= flash[:alert] %></p>
+<% end %>
+
+<% @accessories.each do |accessory| %>
+  <!-- Display each accessory -->
+<% end %>
+
+<%= link_to 'Back', accessories_path %>

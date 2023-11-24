@@ -1,12 +1,10 @@
-<%= form_for @accessory do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-
-  <%= f.label :price_per_day %>
-  <%= f.number_field :price_per_day %>
-
+<%= simple_form_for @object do |f| %>
+  <%= f.input :image, as: :file %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :price_per_day %>
+  <%= f.input :location %>
+  <%= f.input :category, collection: Accessory::CATEGORY %>
+  <%= f.input :condition, collection: Accessory::CONDITION %>
   <%= f.submit "Update Accessory" %>
 <% end %>
