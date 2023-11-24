@@ -3,8 +3,8 @@ class Accessory < ApplicationRecord
   multisearchable against: [:name, :description, :category, :condition, :location]
   #belongs_to :user
 
-  CATEGORY = ['bags', 'shoes', 'belts', 'others', 'exotic']
-  CONDITION = ['Brand New','Just out of the box', 'Mint', 'Loved a little', 'meh']
+  CATEGORY = ['bags', 'shoes', 'belts', 'others', 'exotic', 'misc', 'footwear', 'clothes', 'jewllery']
+  CONDITION = ['Brand New','Just out of the box', 'Mint', 'Loved a little', 'meh', 'worn out', 'on fire']
 
   validates :name, presence: true
   validates :description, presence: true
