@@ -11,7 +11,7 @@
 puts "Cleaning database..."
 Accessory.destroy_all
 
-user= User.create(email: "user@mail.com", password: "1234567", first_name: "Name", last_name: "Last")
+user = User.create(email: "user@mail.com", password: "1234567", first_name: "Name", last_name: "Last")
 
 puts "Creating Accessories..."
 
