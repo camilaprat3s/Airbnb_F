@@ -5,43 +5,38 @@
   <%= link_to 'Back', accessories_path(query: nil), class: 'btn btn-primary' %>
 <% end %>
 
-<% if @accessories.empty? %>
-  <p>No accessories found for '<%= params[:query] %>'.</p>
-  <p>Displaying all available accessories:</p>
-  <% Accessory.all.each do |accessory| %>
-    <div class="list-group-item">
-      <li>
-        <%= link_to accessory.name, accessory_path(accessory) %><br>
-        Description: <%= accessory.description %><br>
-        Price per day: <%= accessory.price_per_day %><br>
-        <%# if current_user == accessory.user %>
-          <%= link_to 'Edit', edit_accessory_path(accessory) %>
-          <%= link_to 'Remove', accessory_path(accessory), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
-        <%# end %>
-      </li>
-    </div>
-  <% end %>
-<% else %>
-  <% unless params[:query].nil? %>
-    <p>Displaying results for '<%= params[:query] %>'.</p>
-  <% end %>
-
-  <div class="container">
-    <ul class="list-group">
-      <% @accessories.each do |accessory| %>
-        <div class="list-group-item">
-          <li>
-            <%= link_to accessory.name, accessory_path(accessory) %><br>
-            Description: <%= accessory.description %><br>
-            Price per day: <%= accessory.price_per_day %><br>
-            <%# if current_user == accessory.user %>
-              <%= link_to 'Edit', edit_accessory_path(accessory) %>
-              <%= link_to 'Remove', accessory_path(accessory), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
-            <%# end %>
-          </li>
+<div class="back-color container mt-5 bg-light">
+  <div class="row">
+    <% if @accessories.empty? %>
+      <p>No accessories found for '<%= params[:query] %>'.</p>
+      <p>Displaying all available accessories:</p>
+    <% else %>
+      <% unless params[:query].nil? %>
+        <p>Displaying results for '<%= params[:query] %>'.</p>
+      <% end %>
+      <% @accessories.each do |accessory|%>
+        <div class="col-md-4 mb-4">
+          <div class="card-item">
+            <img src="<%= accessory.image %>" class="card-img-top" alt="<%= accessory.name %> Image">
+            <div class="card-body">
+              <h5 class="card-title"><%= accessory.name %></h5>
+              <p class="card-text"><%=accessory.description%></p>
+              <div class="button-group">
+                <%= link_to "Details", accessory_path(accessory), class: "btn btn-success btn-sm mt-3" %>
+                <%# if current_user == accessory.user %>
+                <%= link_to 'Edit', edit_accessory_path(accessory), class: "btn btn-primary btn-sm mt-3" %>
+                <%= link_to 'Remove', accessory_path(accessory),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-warning btn-sm mt-3" %>
+                <%# end %>
+              </div>
+            </div>
+          </div>
         </div>
       <% end %>
-    </ul>
-    <%= link_to 'New Accessory', new_accessory_path, class: 'btn btn-primary' %>
+    <% end %>
   </div>
-<% end %>
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <%= link_to 'New Accessory', new_accessory_path, class: 'btn btn-primary col-12 ' %>
+    </div>
+  </div>
+</div>
