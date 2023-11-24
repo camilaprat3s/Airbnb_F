@@ -12,7 +12,8 @@ class AccessoriesController < ApplicationController
 
   def create
     @accessory = Accessory.new(accessory_params)
-    # @accessory.user = current_user
+    #@accessory.user = current_user
+
 
     if @accessory.save
       flash[:notice] = "Accessory was successfully created."
@@ -48,7 +49,7 @@ class AccessoriesController < ApplicationController
   private
 
   def accessory_params
-    params.require(:accessory).permit(:name, :description, :price_per_day)
+    params.require(:accessory).permit(:name, :description, :price_per_day, :category)
   end
 
   def set_accessory
