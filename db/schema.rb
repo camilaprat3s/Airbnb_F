@@ -23,9 +23,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_23_192406) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.string "image_url"
     t.decimal "price_per_day"
     t.string "category"
+    t.string "image_url"
     t.string "image"
   end
 
