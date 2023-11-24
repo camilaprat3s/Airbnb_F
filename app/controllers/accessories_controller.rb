@@ -12,7 +12,6 @@ class AccessoriesController < ApplicationController
 
   def create
     @accessory = Accessory.new(accessory_params)
-    # @accessory.user = current_user
 
     if @accessory.save
       flash[:notice] = "Accessory was successfully created."
